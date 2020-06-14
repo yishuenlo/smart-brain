@@ -1,7 +1,8 @@
 import React from "react";
 import Tilt from "react-tilt";
+import "./FaceRecognition.css";
 
-const FaceRecognition = ({ imageUrl }) => {
+const FaceRecognition = ({ imageUrl, box }) => {
   return (
     <div className="face-recognition">
       <Tilt
@@ -13,16 +14,28 @@ const FaceRecognition = ({ imageUrl }) => {
           <div className="img-extent">
             {/* check to see if there is input */}
             {imageUrl ? (
-              <img
-                alt="input url"
-                style={{ width: "100%" }}
-                src={imageUrl}
-              ></img>
+              <div>
+                <img
+                  id="input-image"
+                  alt="input url"
+                  style={{ width: "100%" }}
+                  src={imageUrl}
+                />
+                <div
+                  className="bounding-box"
+                  style={{
+                    top: box.topRow + "%",
+                    right: box.rightCol + "%",
+                    bottom: box.bottomRow + "%",
+                    left: box.leftCol + "%",
+                  }}
+                ></div>
+              </div>
             ) : (
               //default message
               <p style={{ padding: "10em 0" }}>
                 This Magic Brain will detect faces in your pictures. Give it a
-                try by entering an image link.
+                try by entering an image URL.
               </p>
             )}
           </div>

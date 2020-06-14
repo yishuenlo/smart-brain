@@ -4,6 +4,11 @@
   --accent: #f5e500;
 }
 
+html, body, div, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   width: 80%;
   margin: 0 auto;
@@ -11,7 +16,7 @@
 
 .app-wrapper {
   display: grid;
-  grid-gap: 2em;
+  grid-gap: 4em;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   align-items: center;
   margin: 2em auto;
@@ -50,24 +55,4 @@ button {
     padding: 2em 0 1em 0;
 }
 
-.face-recognition {
-  margin: 0 auto;
-}
 
-.img-extent {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  width: 80%;
-  /* height: 500px; */
-  background-color: #16202e1a;
-  box-shadow: 1px 2px 15px #16202e;
-  margin: 0 auto;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.img-extent p{
-  margin: 3em;
-  color: #96a0ac;
-}

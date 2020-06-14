@@ -18,9 +18,30 @@ class App extends Component {
     this.state = {
       input: "",
       imageUrl: "",
+      box: {},
     };
   }
 
+  //calculate box coorindates from Clarifai data
+  calculateBox = (data) => {
+    const boxCoordinates =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const {left_col, right_col, top_row, bottom_row} = boxCoordinates;
+    return {
+      leftCol: left_col * 100,
+      rightCol: (1 - right_col) * 100,
+      topRow: top_row * 100,
+      bottomRow: (1 - bottom_row) * 100,
+    };
+  };
+
+  //assign state to calculated box
+  displayBox = (box) => {
+    console.log(box.topRow, box.rightCol, box.bottomRow, box.leftCol);
+    this.setState({box: box});
+  }
+
+  //detect input form change
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };
@@ -28,14 +49,10 @@ class App extends Component {
   //display imageUrl when button is clicked
   onButtonClick = () => {
     this.setState({ imageUrl: this.state.input });
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-      function (response) {
-        console.log(response);
-      },
-      function (err) {
-        // there was an error
-      }
-    );
+    app.models
+      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      .then((response) => this.displayBox(this.calculateBox(response)))
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -47,14 +64,14 @@ class App extends Component {
           <div className="info">
             <Logo />
             <p>Welcome to Smart Brain, Pikachu.</p>
-            <h2>Your Rank: 5</h2>
+            <h2>Your Rank: 2</h2>
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonClick={this.onButtonClick}
               inputUrl={this.state.input}
             />
           </div>
-          <FaceRecognition imageUrl={this.state.imageUrl} />
+          <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
         </div>
       </div>
     );
