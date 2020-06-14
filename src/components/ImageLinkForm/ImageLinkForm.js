@@ -6,11 +6,11 @@ const ImageLinkForm = () => {
   return (
     <div className="image-link-form">
       <div className="link-bg">
-        <input placeholder="paste your image link here"></input>
+        <input placeholder="Paste image URL"></input>
       </div>
       <div className="detect-btn" style={{position:'relative'}}>
         <Button
-          action="detect"
+          action="Detect"
         />
       </div>
     </div>
