@@ -2,16 +2,24 @@ import React from "react";
 import Button from "../Button/Button";
 import "./ImageLinkForm.css";
 
-const ImageLinkForm = () => {
+const validUrl = /^(http).*(\.(jpg|png))$/;
+
+const ImageLinkForm = ({ onInputChange, onButtonClick, inputUrl }) => {
   return (
     <div className="image-link-form">
       <div className="link-bg">
-        <input placeholder="Paste image URL"></input>
+        <input
+          placeholder="Insert valid image URL"
+          type="text"
+          onChange={onInputChange}
+        ></input>
       </div>
-      <div className="detect-btn" style={{position:'relative'}}>
-        <Button
-          action="Detect"
-        />
+      <div className="detect-btn" style={{ position: "relative" }}>
+        {validUrl.test(inputUrl) ? (
+          <Button action="Detect" onButtonClick={onButtonClick} />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
