@@ -1,28 +1,29 @@
-.image-link-form{
+.image-link-form {
   margin-top: 3em;
-    width: 360px;
+  width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 input {
-    color: white;
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid var(--accent);
-    background-color: rgba(255, 255, 255, 0);
-    text-align: center;
-    padding-bottom: 2px;
+  color: white;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  padding-bottom: 2px;
 }
 
-.link-bg{
+.link-bg {
   width: 100%;
   padding: 3em 2em;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: #cdd0d61a;
+  box-shadow: 1px 2px 5px #0b111a;
 }
 
-.detect-btn{
-    position: absolute;
-    top: -20px;
+.detect-btn {
+  position: absolute;
+  top: -20px;
 }

@@ -1,3 +1,7 @@
+html {
+  /* height: 100%; */
+}
+
 body {
   margin: 0;
   color: white;
@@ -6,9 +10,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* height: 100%; */
 
-  background: #0f2027;
-  
+  background: #16202e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #16202e,
+    #203a43
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #16202e,
+    #203a43
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 code {
