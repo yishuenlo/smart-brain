@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Login from './scenes/Login/Login';
+import './Sign.css'
 
 class Sign extends Component {
     constructor(){
@@ -6,6 +8,17 @@ class Sign extends Component {
         this.state = {
             isNewUser: false, //show sign in, else register
         }
+    }
+
+    //if isNewUser, display register page
+    //else, display sign in
+
+    render(){
+        return (
+          <div className='Sign'>
+            <Login />
+          </div>
+        );
     }
 }
 
