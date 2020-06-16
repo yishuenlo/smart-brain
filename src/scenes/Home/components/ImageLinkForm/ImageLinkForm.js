@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "../../../../components/Button/Button";
 import "./ImageLinkForm.css";
 
-const validUrl = /^(http).*(\.(jpg|png))$/;
+const validUrl = /^(http).*(\.(jpg|png|jpeg|))$/;
 
 const ImageLinkForm = ({ onInputChange, onButtonClick, inputUrl }) => {
   return (
