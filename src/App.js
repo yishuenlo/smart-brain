@@ -13,21 +13,30 @@ class App extends Component {
     super();
     this.state = {
       login: false,
+      entry: "signin",
     };
   }
 
   //if login, display Home
   //else, display Sign
-  loginChange = (status) => {
+  loginChange = (status, entry) => {
     this.setState({ login: status });
+    this.setState({ entry: entry });
   };
 
   render() {
     return (
       <div className="App">
         <Particles className="particles" params={ParticlesSetting} />
-        <Navigation loginStatus={this.state.login} loginChange={this.loginChange} />
-        {this.state.login ? <Home /> : <Sign loginChange={this.loginChange} />}
+        <Navigation
+          loginStatus={this.state.login}
+          loginChange={this.loginChange}
+        />
+        {this.state.login ? (
+          <Home greeting={this.state.entry} />
+        ) : (
+          <Sign loginChange={this.loginChange} />
+        )}
       </div>
     );
   }

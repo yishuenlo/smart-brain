@@ -11,7 +11,7 @@ const Login = ({ loginChange, isNewUser }) => {
       <h2>Sign In</h2>
       <FormField label="Name" type="text" />
       <FormField label="Password" type="password" />
-      <Button action="Sign in" handleClick={() => loginChange(true)} />
+      <Button action="Sign in" handleClick={() => loginChange(true, 'signin')} />
       <p onClick={() => isNewUser(true)}>New user? Register</p>
     </div>
   );

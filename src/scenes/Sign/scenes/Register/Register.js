@@ -12,7 +12,7 @@ const Register = ({ loginChange, isNewUser }) => {
       <FormField label="Name" type="text" />
       <FormField label="Email" type="email" />
       <FormField label="Password" type="text" />
-      <Button action="Register" handleClick={() => loginChange(true)} />
+      <Button action="Register" handleClick={() => loginChange(true, 'register')} />
       <p onClick={() => isNewUser(false)}>Existing user? Sign in</p>
     </div>
   );

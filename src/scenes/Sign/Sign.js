@@ -7,7 +7,7 @@ class Sign extends Component {
     constructor(){
         super();
         this.state = {
-            isNewUser: true, //show sign in, else register
+            isNewUser: false, //show sign in, else register
         }
     }
 
