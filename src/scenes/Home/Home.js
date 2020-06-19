@@ -59,8 +59,14 @@ class Home extends Component {
       <div className="Home">
         <div className="info">
           <Logo />
-          {/* customize greeting for returning user */}
-          <p>{this.props.greeting === 'signin' ? 'Welcome back' : 'Welcome'} to Smart Brain, Pikachu.</p>
+          <p>
+            {
+              //customize greeting for returning user
+              this.props.greeting === "signin"
+                ? "Hey there, Deadpool! Welcome back to Smart Brain!"
+                : "Greetings, Deadpool. Welcome to Smart Brain!"
+            }
+          </p>
           <h2>Your Rank: 2</h2>
           <ImageLinkForm
             onInputChange={this.onInputChange}

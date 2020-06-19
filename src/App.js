@@ -32,11 +32,15 @@ class App extends Component {
           loginStatus={this.state.login}
           loginChange={this.loginChange}
         />
-        {this.state.login ? (
-          <Home greeting={this.state.entry} />
-        ) : (
-          <Sign loginChange={this.loginChange} />
-        )}
+
+        {
+          //check for login status
+          this.state.login ? (
+            <Home greeting={this.state.entry} />
+          ) : (
+            <Sign loginChange={this.loginChange} />
+          )
+        }
       </div>
     );
   }
