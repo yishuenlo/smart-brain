@@ -4,7 +4,7 @@ import "./ImageLinkForm.css";
 
 const validUrl = /^(http).*(\.(jpg|png|jpeg|))$/;
 
-const ImageLinkForm = ({ onInputChange, onButtonClick, inputUrl }) => {
+const ImageLinkForm = ({ onInputChange, handleAPICall, inputUrl }) => {
   return (
     <div className="image-link-form">
       <div className="link-bg">
@@ -16,7 +16,7 @@ const ImageLinkForm = ({ onInputChange, onButtonClick, inputUrl }) => {
       </div>
       <div className="detect-btn" style={{ position: "relative" }}>
         {validUrl.test(inputUrl) ? (
-          <Button action="Detect" onButtonClick={onButtonClick} />
+          <Button action="Detect" handleClick={handleAPICall} />
         ) : (
           ""
         )}

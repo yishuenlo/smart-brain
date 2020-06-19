@@ -46,7 +46,7 @@ class Home extends Component {
   };
 
   //display imageUrl when button is clicked
-  onButtonClick = () => {
+  handleAPICall = () => {
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(FACE_DETECT_MODEL, this.state.input)
@@ -63,7 +63,7 @@ class Home extends Component {
           <h2>Your Rank: 2</h2>
           <ImageLinkForm
             onInputChange={this.onInputChange}
-            onButtonClick={this.onButtonClick}
+            handleAPICall={this.handleAPICall}
             inputUrl={this.state.input}
           />
         </div>

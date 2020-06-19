@@ -2,9 +2,9 @@ import React from "react";
 import Logo from "../../../../components/Logo/Logo";
 import FormField from "../../components/FormField/FormField";
 import Button from "../../../../components/Button/Button";
-import "./Login.css";
+import "../Login/Login.css";
 
-const Register = () => {
+const Register = ({ loginChange, isNewUser }) => {
   return (
     <div className="Login">
       <Logo className="Logo" style={{ margin: "2em" }} />
@@ -12,7 +12,8 @@ const Register = () => {
       <FormField label="Name" type="text" />
       <FormField label="Email" type="email" />
       <FormField label="Password" type="text" />
-      <Button action="Register" />
+      <Button action="Register" handleClick={() => loginChange(true)} />
+      <p onClick={() => isNewUser(false)}>Existing user? Sign in</p>
     </div>
   );
 };
