@@ -50,11 +50,14 @@ class Home extends Component {
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(FACE_DETECT_MODEL, this.state.input)
-      .then((response) => this.displayBox(this.calculateBox(response)))
+      .then((response) => {
+        this.displayBox(this.calculateBox(response));
+      })
       .catch((err) => console.log(err));
   };
 
   render() {
+    const { userName, userEntries } = this.props;
     return (
       <div className="Home">
         <div className="info">
@@ -63,11 +66,11 @@ class Home extends Component {
             {
               //customize greeting for returning user
               this.props.greeting === "signin"
-                ? "Hey there, Deadpool! Welcome back to Smart Brain!"
-                : "Greetings, Deadpool. Welcome to Smart Brain!"
+                ? `Hey there, ${userName}! Welcome back to Smart Brain!`
+                : `Greetings, ${userName}. Welcome to Smart Brain!`
             }
           </p>
-          <h2>Your Rank: 2</h2>
+          <h2>{`Face Searches: ${userEntries}`}</h2>
           <ImageLinkForm
             onInputChange={this.onInputChange}
             handleAPICall={this.handleAPICall}

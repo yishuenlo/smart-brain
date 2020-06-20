@@ -1,10 +1,10 @@
 import React from "react";
 import './FormField.css';
 
-const FormField = ({ type, label }) => {
+const FormField = ({ type, label, onChange }) => {
   return (
     <div className='FormField'>
-      <input type={type}></input>
+      <input type={type} onChange={onChange}></input>
       <p>{label}</p>
     </div>
   );

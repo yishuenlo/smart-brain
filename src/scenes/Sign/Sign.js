@@ -4,8 +4,8 @@ import Register from './scenes/Register/Register';
 import './Sign.css'
 
 class Sign extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             isNewUser: false, //show sign in, else register
         }
@@ -24,11 +24,13 @@ class Sign extends Component {
               <Register
                 loginChange={this.props.loginChange}
                 isNewUser={this.isNewUser}
+                loadUser={this.props.loadUser}
               />
             ) : (
               <Login
                 loginChange={this.props.loginChange}
                 isNewUser={this.isNewUser}
+                loadUser={this.props.loadUser}
               />
             )}
           </div>
