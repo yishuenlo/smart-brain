@@ -13,8 +13,8 @@ const app = new Clarifai.App({
 });
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       input: "",
       imageUrl: "",
@@ -51,6 +51,20 @@ class Home extends Component {
     app.models
       .predict(FACE_DETECT_MODEL, this.state.input)
       .then((response) => {
+        if (response) {
+          fetch("http://localhost:3001/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: this.props.userId,
+            }),
+          })
+            .then((resp) => resp.json())
+            .then((count) => {
+              this.props.updateEntries(count);
+            })
+            .catch((err) => console.log(err, 'not getting reponse for entry count'));
+        }
         this.displayBox(this.calculateBox(response));
       })
       .catch((err) => console.log(err));

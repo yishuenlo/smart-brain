@@ -43,6 +43,13 @@ class App extends Component {
     this.setState({ entry: entry });
   };
 
+  updateEntries = (count) => {
+    //use object.assign to only update certain properties
+    this.setState(Object.assign(this.state.user, {
+      entries: count
+    }));
+  }
+
   render() {
     return (
       <div className="App">
@@ -57,8 +64,10 @@ class App extends Component {
           this.state.login ? (
             <Home
               greeting={this.state.entry}
+              userId={this.state.user.id}
               userName={this.state.user.name}
               userEntries={this.state.user.entries}
+              updateEntries={this.updateEntries}
             />
           ) : (
             <Sign loginChange={this.loginChange} loadUser={this.loadUser} />
