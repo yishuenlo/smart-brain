@@ -11,6 +11,7 @@ class Register extends Component {
       email: "",
       password: "",
       name: "",
+      registerError: false,
     };
   }
 
@@ -26,6 +27,10 @@ class Register extends Component {
     this.setState({name: event.target.value})
   }
 
+  inputFilled = (status) => {
+    this.setState({inputFilled: status})
+  }
+
   onSubmitSignIn = async () => {
     const res = await fetch("http://localhost:3001/register", {
       method: "post",
@@ -39,10 +44,12 @@ class Register extends Component {
 
     const user = await res.json();
 
-    if(user){
+    if(user.id){
       //update user profile
       this.props.loadUser(user);
-      this.props.loginChange(true, "signin");
+      this.props.loginChange(true, "register");
+    } else {
+      this.setState({ registerError: true });
     }
   };
 
@@ -52,6 +59,12 @@ class Register extends Component {
       <div className="Login">
         <Logo className="Logo" style={{ margin: "2em" }} />
         <h2>Register</h2>
+        <p style={{ color: "red", fontSize: "0.8em" }}>
+          {
+            //sign in error message
+            this.state.registerError ? "Unable to register" : ""
+          }
+        </p>
         <FormField label="Name" type="text" onChange={this.onNameChange} />
         <FormField label="Email" type="email" onChange={this.onEmailChange} />
         <FormField

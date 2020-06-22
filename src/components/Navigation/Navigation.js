@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navigation = ({ loginStatus, loginChange }) => {
+const Navigation = ({ loginChange }) => {
   const navbarCss = {
     display: "flex",
     justifyContent: "flex-end",
@@ -13,17 +13,9 @@ const Navigation = ({ loginStatus, loginChange }) => {
 
   return (
     <nav style={navbarCss}>
-      { loginStatus ? 
-      //if logged in
-      (<p style={btnCss} onClick={() => loginChange(false)}>
+      <p style={btnCss} onClick={() => loginChange(false)}>
         Sign Out
-      </p>) : (
-        //if logged out
-        <div>
-        </div>
-      )
-      }
-      
+      </p>
     </nav>
   );
 };

@@ -42,6 +42,10 @@ class Login extends Component {
     }
   };
 
+  onKeyDown = event => {
+    if(event.key === 'Enter') return this.onSubmitSignIn();
+  }
+
   render() {
     //destucture to get props.variables
     const { isNewUser } = this.props;
@@ -58,16 +62,18 @@ class Login extends Component {
           }
         </p>
 
-        <FormField 
-          label="Email" 
-          type="email" 
-          onChange={this.onEmailChange} 
+        <FormField
+          label="Email"
+          type="email"
+          onChange={this.onEmailChange}
+          onKeyDown={this.onKeyDown}
         />
-        
+
         <FormField
           label="Password"
           type="password"
           onChange={this.onPasswordChange}
+          onKeyDown={this.onKeyDown}
         />
 
         <Button action="Sign in" handleClick={this.onSubmitSignIn} />

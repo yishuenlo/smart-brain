@@ -8,19 +8,21 @@ import "./App.css";
 import Particles from "react-particles-js";
 import ParticlesSetting from "./services/particlesJS.json";
 
+const initialState = {
+  id: "",
+  name: "",
+  email: "",
+  entries: 0,
+  joined: "",
+};
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       login: false,
       entry: "signin",
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: 0,
-        joined: "",
-      },
+      user: initialState,
     };
   }
 
@@ -45,10 +47,12 @@ class App extends Component {
 
   updateEntries = (count) => {
     //use object.assign to only update certain properties
-    this.setState(Object.assign(this.state.user, {
-      entries: count
-    }));
-  }
+    this.setState(
+      Object.assign(this.state.user, {
+        entries: count,
+      })
+    );
+  };
 
   render() {
     return (
