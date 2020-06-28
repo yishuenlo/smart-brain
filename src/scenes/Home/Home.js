@@ -6,12 +6,6 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import "./Home.css";
 
-import Clarifai, { FACE_DETECT_MODEL } from "clarifai";
-
-const app = new Clarifai.App({
-  apiKey: "2ceeae7f36474cf8b24754fb5525e9ca",
-});
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -48,11 +42,18 @@ class Home extends Component {
   //display imageUrl when button is clicked
   handleAPICall = () => {
     this.setState({ imageUrl: this.state.input });
-    app.models
-      .predict(FACE_DETECT_MODEL, this.state.input)
+    fetch("https://sheltered-refuge-77827.herokuapp.com/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log("api no reponse"))
       .then((response) => {
         if (response) {
-          fetch("http://localhost:3001/image", {
+          fetch("https://sheltered-refuge-77827.herokuapp.com/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -63,7 +64,9 @@ class Home extends Component {
             .then((count) => {
               this.props.updateEntries(count);
             })
-            .catch((err) => console.log(err, 'not getting reponse for entry count'));
+            .catch((err) =>
+              console.log(err, "not getting reponse for entry count")
+            );
         }
         this.displayBox(this.calculateBox(response));
       })

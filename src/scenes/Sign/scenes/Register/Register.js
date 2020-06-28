@@ -32,7 +32,7 @@ class Register extends Component {
   }
 
   onSubmitSignIn = async () => {
-    const res = await fetch("http://localhost:3001/register", {
+    const res = await fetch("https://sheltered-refuge-77827.herokuapp.com/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
